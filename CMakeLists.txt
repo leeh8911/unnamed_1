@@ -14,7 +14,6 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 set(SRC_FILES
-    src/registry.cpp
     src/parser/config_parser.cpp
 )
 
