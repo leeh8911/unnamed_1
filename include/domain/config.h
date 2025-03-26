@@ -4,8 +4,8 @@
 #include <filesystem>
 #include <memory>
 
-#include "kwargs.h"
-#include "parser/config_parser.h"
+#include "config/kwargs.h"
+#include "config/parser/config_parser.h"
 
 namespace Config
 {

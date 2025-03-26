@@ -1,4 +1,4 @@
-#include "parser/config_parser.h"
+#include "domain/config/parser/config_parser.h"
 
 #include <yaml-cpp/yaml.h>
 
@@ -7,7 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "kwargs.h"
+#include "domain/config/kwargs.h"
 
 nlohmann::json convertYamlToJson(const YAML::Node& node)
 {

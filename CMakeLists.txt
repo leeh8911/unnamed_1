@@ -14,7 +14,7 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 set(SRC_FILES
-    src/parser/config_parser.cpp
+    src/domain/config/parser/config_parser.cpp
 )
 
 add_library(${PROJECT_LIB} ${SRC_FILES})

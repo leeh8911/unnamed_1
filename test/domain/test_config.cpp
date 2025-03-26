@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "config.h"
+#include "domain/config.h"
 
 TEST(Config, HandleJsonConfigCase)
 {
