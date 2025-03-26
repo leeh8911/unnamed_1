@@ -43,30 +43,28 @@ class GenericRegistry
 };
 
 // 네임스페이스별로 Registry 인스턴스를 생성
-#define DEFINE_REGISTRY(NS)            \
-    namespace NS                       \
-    {                                  \
-    inline GenericRegistry& Registry() \
-    {                                  \
-        static GenericRegistry inst;   \
-        return inst;                   \
-    }                                  \
-    }
+// 네임스페이스별로 Registry 인스턴스를 생성
+#define DEFINE_REGISTRY(NAME)               \
+    namespace                               \
+    {                                       \
+    static GenericRegistry NAME##_instance; \
+    }                                       \
+    static GenericRegistry& NAME = NAME##_instance;
 
 // 자동 등록 매크로
-#define REGISTER(NS, ClassType)                                                             \
-    namespace                                                                               \
-    {                                                                                       \
-    struct AutoRegister_##ClassType                                                         \
-    {                                                                                       \
-        AutoRegister_##ClassType()                                                          \
-        {                                                                                   \
-            NS::Registry().register_class(#ClassType,                                       \
-                                          [](const Kwargs& kwargs) -> std::shared_ptr<void> \
-                                          { return std::make_shared<ClassType>(kwargs); }); \
-        }                                                                                   \
-    };                                                                                      \
-    static AutoRegister_##ClassType global_auto_##ClassType;                                \
+#define REGISTER(CONCRETE_REGISTRY, ClassType)                                                 \
+    namespace                                                                                  \
+    {                                                                                          \
+    struct AutoRegister_##ClassType                                                            \
+    {                                                                                          \
+        AutoRegister_##ClassType()                                                             \
+        {                                                                                      \
+            CONCRETE_REGISTRY.register_class(#ClassType,                                       \
+                                             [](const Kwargs& kwargs) -> std::shared_ptr<void> \
+                                             { return std::make_shared<ClassType>(kwargs); }); \
+        }                                                                                      \
+    };                                                                                         \
+    static AutoRegister_##ClassType global_auto_##ClassType;                                   \
     }
 
 #endif  // __REGISTRY_H__
