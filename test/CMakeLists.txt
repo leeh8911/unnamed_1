@@ -19,7 +19,10 @@ else()
 endif()
 
 
-set(TEST_FILES test_config.cpp test_registry.cpp)
+set(TEST_FILES 
+    domain/test_config.cpp
+    domain/test_registry.cpp
+)
 
 add_executable(${PROJECT_TEST} test_main.cpp ${TEST_FILES})
 target_include_directories(

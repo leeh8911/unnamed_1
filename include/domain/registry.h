@@ -7,7 +7,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "config.h"
+#include "domain/config.h"
 
 class GenericRegistry
 {

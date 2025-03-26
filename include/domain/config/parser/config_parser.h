@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 
-#include "kwargs.h"
+#include "domain/config/kwargs.h"
 
 class IConfigParser
 {
